@@ -9,7 +9,7 @@
   {
     "name": "Income Tax India - Circulars",
     "url": "https://www.incometaxindia.gov.in/circulars",
-    "selector": "main, #main-content, .content-wrapper",
+    "selector": "body",
     "renderer": "selenium",
     "enabled": true
   },
