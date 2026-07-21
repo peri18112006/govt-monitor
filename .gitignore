@@ -1,0 +1,11 @@
+# Never commit real secrets
+.env
+
+# Virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# NOTE: data/monitor.db is intentionally NOT ignored.
+# GitHub Actions commits it back after every run so state
+# (which items were already seen) persists between scheduled runs.

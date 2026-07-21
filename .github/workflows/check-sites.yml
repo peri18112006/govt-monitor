@@ -1,0 +1,49 @@
+name: Govt Site Monitor
+
+on:
+  schedule:
+    # Runs every 3 hours (UTC). Adjust the cron expression to change frequency.
+    # Cron format: minute hour day month weekday
+    - cron: '0 */3 * * *'
+  workflow_dispatch: {}  # lets you trigger it manually from the Actions tab
+
+# Allow this workflow to push the updated database file back to the repo
+permissions:
+  contents: write
+
+jobs:
+  check-sites:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Chrome (for JS-heavy sites)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run site check
+        env:
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          SELENIUM_BROWSER: chrome
+        run: python run_check.py
+
+      - name: Commit updated state (if changed)
+        run: |
+          git config user.name "govt-site-monitor-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/monitor.db
+          git diff --staged --quiet || git commit -m "Update monitor state [skip ci]"
+          git push

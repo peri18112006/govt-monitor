@@ -1,0 +1,44 @@
+[
+  {
+    "name": "ICAI - Announcements",
+    "url": "https://www.icai.org/category/announcements",
+    "selector": "main, #main-content, .region-content",
+    "renderer": "requests",
+    "enabled": true
+  },
+  {
+    "name": "Income Tax India - Circulars",
+    "url": "https://www.incometaxindia.gov.in/circulars",
+    "selector": "main, #main-content, .content-wrapper",
+    "renderer": "selenium",
+    "enabled": true
+  },
+  {
+    "name": "CBIC - Tax Information Portal (GST tab)",
+    "url": "https://taxinformation.cbic.gov.in/",
+    "selector": "main, #root, .content-area",
+    "renderer": "selenium",
+    "enabled": true
+  },
+  {
+    "name": "NFRA - What's New",
+    "url": "https://nfra.gov.in/",
+    "selector": "main, #main-content, .whats-new, .marquee",
+    "renderer": "requests",
+    "enabled": true
+  },
+  {
+    "name": "IFRS - Open for Comment",
+    "url": "https://www.ifrs.org/projects/open-for-comment/",
+    "selector": "main, #start-of-content, article",
+    "renderer": "requests",
+    "enabled": true
+  },
+  {
+    "name": "IFRS Foundation - News",
+    "url": "https://www.ifrs.org/news-and-events/news/",
+    "selector": "main, #start-of-content, table",
+    "renderer": "selenium",
+    "enabled": true
+  }
+]
