@@ -25,7 +25,7 @@ def _get_html_requests(url: str, timeout: int = 20) -> str:
     return resp.text
 
 
-def _get_html_selenium(url: str, wait_seconds: int = 5) -> str:
+def _get_html_selenium(url: str, wait_seconds: int = 10) -> str:
     """
     Renders the page with a headless browser and returns the final HTML.
     Needed for JS-heavy / SPA sites where content loads via AJAX after page load.
