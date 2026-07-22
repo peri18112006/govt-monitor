@@ -1,9 +1,9 @@
 [
   {
-    "name": "BBC - news",
-    "url": "https://www.bbc.com/news",
+    "name": "ICAI - Announcements",
+    "url": "https://www.icai.org/category/announcements",
     "selector": "main, #main-content, .region-content",
-    "renderer": "selenium",
+    "renderer": "requests",
     "enabled": true
   },
   {
